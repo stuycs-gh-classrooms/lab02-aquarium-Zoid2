@@ -8,6 +8,11 @@ class Turtle extends Animal {
     super(gx, gy, gs, gvx, gvy);
     if (velocity.x > 0) {
       flipH = true;
+      sprite = loadImage("yellow_bellied_slider.psd_rightH.png");
+    }
+    
+    else {
+      sprite = loadImage("yellow_bellied_slider.psd.png");
     }
   }
   
@@ -16,19 +21,18 @@ class Turtle extends Animal {
     if (position.x + size >= width || position.x <= 0) {
       velocity.x *= -1;
       flipH = !flipH;
+      if (!flipH) {
+        sprite = loadImage("yellow_bellied_slider.psd.png");
+      }
+    
+      else {
+        sprite = loadImage("yellow_bellied_slider.psd_rightH.png");
+      }
     }
   }
   
   void display() {
-    if (!flipH) {
-      sprite = loadImage("yellow_bellied_slider.psd.png");
-      image(sprite, position.x, position.y, 50, 50);
-    }
-    
-    else {
-      sprite = loadImage("yellow_bellied_slider.psd_rightH.png");
-      image(sprite, position.x, position.y, 50, 50);
-    }
+    image(sprite, position.x, position.y, 50, 50);
   }
   
 }

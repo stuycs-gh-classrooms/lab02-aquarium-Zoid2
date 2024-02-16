@@ -19,8 +19,16 @@ void draw() {
   background(150);
   t.moveAnimals();
   t.display();
+  t.hungerAnimals();
+  t.scavengeAnimals();
 }
 
-void mouseClicked() {
-  t.addAnimal(mouseX, mouseY);
+void mousePressed() {
+  if (mouseButton == LEFT) {
+    t.addAnimal(mouseX, mouseY);
+  }
+  
+  if (mouseButton == RIGHT) {
+    t.addFood();
+  }
 }

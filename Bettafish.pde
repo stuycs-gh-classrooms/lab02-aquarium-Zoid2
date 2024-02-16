@@ -1,7 +1,10 @@
 class BettaFish extends Animal {
+  PImage sprite;
   
-  BettaFish(int gx, int gy, int gs, float gvx, float gvy) {
-    super(gx, gy, gs, gvx, gvy);
+  
+  BettaFish(int gx, int gy) {
+    super(gx, gy);
+    sprite = loadImage("bettafish.png");
   }
 
   void move() {
@@ -16,7 +19,9 @@ class BettaFish extends Animal {
                 int sof = (int) random(2);
                 if (sof == 0) {
                     t.animals.remove(i);
+                    hunger += 1000;
                 } else {
+                    t.animals.get(i).hunger += 1000;
                     t.animals.remove(this);
                 }
             }
@@ -25,7 +30,6 @@ class BettaFish extends Animal {
   }
 
   void display() {
-    fill(0, 0, 255);
-    square(position.x, position.y, size);
+    image(sprite, position.x, position.y, size, size);
   }
 }
